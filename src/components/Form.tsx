@@ -15,15 +15,16 @@ type Submitter = {
 const MySwal = withReactContent(Swal);
 
 const Form = () => {
-  const [name, updateName, nameError, nameMessage] = useTextInput(
+  let [name, setName,updateName, nameError, nameMessage] = useTextInput(
      isName
   );
 
-  const [email, updateEmail, emailError, emailMessage] = useTextInput(
+  let [email, setEmail,updateEmail, emailError, emailMessage] = useTextInput(
      isEmail,
   );
-  const [
+  let [
     password,
+    setPassword,
     updatePassword,
     passwordError,
     passwordMessage,
@@ -64,6 +65,7 @@ const Form = () => {
     };
 
     console.log('Payload:', payload);
+  
 
     MySwal.fire({
       title: (
@@ -72,7 +74,14 @@ const Form = () => {
         )}!`}</p>
       ),
     });
+    reset();
   };
+
+  const reset=()=>{
+    setName('')
+    setEmail('')
+    setPassword('')
+  }
 
   return (
     <div className='form-container'>
