@@ -29,10 +29,20 @@ const Form = () => {
       : setDisable(false);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const payload = {
+      name,
+      email,
+    };
+
+    console.log(payload);
+  };
+
   return (
     <>
       <h1>Form Component</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor='name'>
           <input
             className={nameErrShow ? nameMessage(nameError) : ''}
