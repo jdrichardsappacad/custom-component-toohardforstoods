@@ -1,5 +1,5 @@
 .form-container {
-  height: 50vh;
+  height: 65vh;
   width: 30vw;
   background-color: #066ace;
   display: flex;
@@ -19,6 +19,7 @@ form {
 input {
   background: white;
   border-color: transparent;
+  border-radius: 2px;
 }
 h4 {
   background: transparent;
