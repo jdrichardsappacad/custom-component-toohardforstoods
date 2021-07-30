@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTextInput } from '../hooks/textInput';
 import { isEmail, isName } from '../utils/validations';
 import './Form.css';
@@ -17,6 +17,21 @@ const Form = () => {
 
   const [disable, setDisable] = useState(true);
 
+  // const enabler = (value, type) => {
+  //   value.length && type === 'name'
+  //     ? setNameErrShow(true)
+  //     : setNameErrShow(false);
+  //   value.length && type === 'email'
+  //     ? setEmailErrShow(true)
+  //     : setEmailErrShow(false);
+  // };
+
+  useEffect(() => {
+    isName(name).length || isEmail(email).length
+      ? setDisable(true)
+      : setDisable(false);
+  }, [name, email]);
+
   const handleBlur = (value, type) => {
     value.length && type === 'name'
       ? setNameErrShow(true)
@@ -24,9 +39,6 @@ const Form = () => {
     value.length && type === 'email'
       ? setEmailErrShow(true)
       : setEmailErrShow(false);
-    isName(name).length || isEmail(email).length
-      ? setDisable(true)
-      : setDisable(false);
   };
 
   const handleSubmit = e => {
