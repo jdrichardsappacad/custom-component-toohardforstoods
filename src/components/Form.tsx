@@ -55,7 +55,7 @@ const Form = () => {
       : setPasswordErrShow(false);
   };
 
-  const handleSubmit = (event: FormEvent):void => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     const payload:Submitter = {
       name,
@@ -114,7 +114,7 @@ const Form = () => {
           <p className='form'>{passwordErrShow && passwordError}</p>
         </label>
 
-        <button type='submit' disabled={disable}>
+        <button className={disable ?'button-disable':'button-enable'} type='submit' disabled={disable}>
           Submit
         </button>
       </form>

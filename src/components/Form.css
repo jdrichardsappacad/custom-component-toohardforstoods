@@ -47,7 +47,6 @@ input {
 }
 
 button[type='submit'] {
-  background-color: #4caf50;
   border: none;
   border-radius: 5px;
   color: white;
@@ -56,6 +55,18 @@ button[type='submit'] {
   margin: 10px 2px;
   cursor: pointer;
   width: 6em;
+}
+
+.button-disable {
+  background: gray;
+}
+
+.button-enable {
+  background-color: #4caf50;
+}
+
+button.button-enable:hover {
+  background-color: #6ee172;
 }
 
 .payloadMessage {
