@@ -3,3 +3,6 @@ export const isName = value =>
 
 export const isEmail = value =>
   !value.includes('@') ? 'Please use a proper email' : '';
+
+export const isPassword = value =>
+  value.length < 6 ? 'Password length must be 6 or greater' : '';

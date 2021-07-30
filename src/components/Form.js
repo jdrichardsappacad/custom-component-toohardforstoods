@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTextInput } from '../hooks/textInput';
-import { isEmail, isName } from '../utils/validations';
+import { isEmail, isName, isPassword } from '../utils/validations';
 import './Form.css';
 
 const Form = () => {
@@ -11,17 +11,26 @@ const Form = () => {
   const [email, updateEmail, emailError, emailMessage] = useTextInput({
     validation: isEmail,
   });
+  const [
+    password,
+    updatePassword,
+    passwordError,
+    passwordMessage,
+  ] = useTextInput({
+    validation: isPassword,
+  });
 
   const [nameErrShow, setNameErrShow] = useState(false);
   const [emailErrShow, setEmailErrShow] = useState(false);
+  const [passwordErrShow, setPasswordErrShow] = useState(false);
 
   const [disable, setDisable] = useState(true);
 
   useEffect(() => {
-    isName(name).length || isEmail(email).length
+    isPassword(password).length || isName(name).length || isEmail(email).length
       ? setDisable(true)
       : setDisable(false);
-  }, [name, email]);
+  }, [name, email, password]);
 
   const handleBlur = (value, type) => {
     value.length && type === 'name'
@@ -30,6 +39,9 @@ const Form = () => {
     value.length && type === 'email'
       ? setEmailErrShow(true)
       : setEmailErrShow(false);
+    value.length && type === 'password'
+      ? setPasswordErrShow(true)
+      : setPasswordErrShow(false);
   };
 
   const handleSubmit = e => {
@@ -37,6 +49,7 @@ const Form = () => {
     const payload = {
       name,
       email,
+      password,
     };
 
     console.log(payload);
@@ -53,7 +66,7 @@ const Form = () => {
             value={name}
             onChange={updateName}
             onBlur={() => handleBlur(nameError, 'name')}
-            placeholder='Name'
+            placeholder='name'
           />
           <p className='form'>{nameErrShow && nameError}</p>
         </label>
@@ -64,9 +77,21 @@ const Form = () => {
             value={email}
             onChange={updateEmail}
             onBlur={() => handleBlur(emailError, 'email')}
-            placeholder='Email'
+            placeholder='email'
           />
           <p className='form'>{emailErrShow && emailError}</p>
+        </label>
+        <label htmlFor='password'>
+          <input
+            type='password'
+            className={emailErrShow ? passwordMessage(passwordError) : ''}
+            id='password'
+            value={password}
+            onChange={updatePassword}
+            onBlur={() => handleBlur(passwordError, 'password')}
+            placeholder='password'
+          />
+          <p className='form'>{passwordErrShow && passwordError}</p>
         </label>
 
         <button disabled={disable}>Submit</button>
