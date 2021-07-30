@@ -70,5 +70,6 @@ button.button-enable:hover {
 }
 
 .payloadMessage {
+  color: black;
   font-size: 0.7em;
 }

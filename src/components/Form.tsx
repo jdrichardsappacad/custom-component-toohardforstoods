@@ -64,7 +64,7 @@ const Form = () => {
     };
 
     console.log('Payload:', payload);
-
+    setDisable(true)
     MySwal.fire({
       title: (
         <p className='payloadMessage'>{`Thanks for signing up ${payload.name[0].toUpperCase()}${payload.name.slice(
@@ -76,7 +76,6 @@ const Form = () => {
 
   return (
     <div className='form-container'>
-      {console.log(name, email, password)}
       <h4>Sign Up:</h4>
       <form onSubmit={handleSubmit}>
         <label htmlFor='name'>
