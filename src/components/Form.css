@@ -18,22 +18,25 @@ form {
 
 input {
   background: white;
+  border-color: transparent;
 }
 h4 {
   background: transparent;
 }
 
 p.form {
-  color: red;
-  font-size: 0.08em;
+  color: rgb(252, 84, 115);
+  font-size: 0.55em;
+  background: transparent;
 }
 
 .border-error {
-  border: 1px solid red;
+  border: 2px solid rgb(252, 84, 115);
 }
 
 .border {
-  border: 1px solid gray;
+  border: 1px inset green;
+  border-color: green;
 }
 
 input {
