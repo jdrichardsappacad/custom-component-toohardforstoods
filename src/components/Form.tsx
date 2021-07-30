@@ -72,11 +72,7 @@ const Form = () => {
         )}!`}</p>
       ),
     });
-
-    // alert(`Thanks for signing up ${payload.name}!`);
   };
-
-  const cName:string = nameErrShow ? nameMessage(nameError) : ''
 
   return (
     <div className='form-container'>
@@ -85,7 +81,7 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor='name'>
           <input
-            className={cName}
+            className={nameErrShow ? nameMessage(nameError) : ''}
             id='name'
             value={name}
             onChange={updateName}
