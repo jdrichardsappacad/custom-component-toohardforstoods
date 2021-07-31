@@ -61,7 +61,8 @@ const Form = () => {
     };
 
     console.log('Payload:', payload);
-  
+    const {name:pName} = payload
+    alert(`Thanks for signing up ${pName[0].toUpperCase}${pName.slice(1)}`)
     reset();
   };
 
