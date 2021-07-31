@@ -1,6 +1,4 @@
 import { useState, useEffect,FormEvent } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 import { useTextInput } from '../hooks/textInput';
 import { isEmail, isName, isPassword } from '../utils/validations';
@@ -11,8 +9,6 @@ type Submitter = {
   email:String,
   password:String
 }
-
-const MySwal = withReactContent(Swal);
 
 const Form = () => {
   let [name, setName,updateName, nameError, nameMessage] = useTextInput(
@@ -66,14 +62,6 @@ const Form = () => {
 
     console.log('Payload:', payload);
   
-
-    MySwal.fire({
-      title: (
-        <p className='payloadMessage'>{`Thanks for signing up ${payload.name[0].toUpperCase()}${payload.name.slice(
-          1
-        )}!`}</p>
-      ),
-    });
     reset();
   };
 
