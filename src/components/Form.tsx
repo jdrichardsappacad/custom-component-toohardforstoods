@@ -1,35 +1,23 @@
-import { useState, useEffect,FormEvent } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import { useState, useEffect, FormEvent } from 'react';
 
 import { useTextInput } from '../hooks/textInput';
 import { isEmail, isName, isPassword } from '../utils/validations';
 import './Form.css';
 
 type Submitter = {
-  name:String,
-  email:String,
-  password:String
-}
-
-const MySwal = withReactContent(Swal);
+  name: String;
+  email: String;
+  password: String;
+};
 
 const Form = () => {
-  const [name, updateName, nameError, nameMessage] = useTextInput(
-     isName
-  );
+  let [name, setName, updateName, nameError, nameMessage] =
+    useTextInput(isName);
 
-  const [email, updateEmail, emailError, emailMessage] = useTextInput(
-     isEmail,
-  );
-  const [
-    password,
-    updatePassword,
-    passwordError,
-    passwordMessage,
-  ] = useTextInput(
-    isPassword,
-  );
+  let [email, setEmail, updateEmail, emailError, emailMessage] =
+    useTextInput(isEmail);
+  let [password, setPassword, updatePassword, passwordError, passwordMessage] =
+    useTextInput(isPassword);
 
   const [nameErrShow, setNameErrShow] = useState(false);
   const [emailErrShow, setEmailErrShow] = useState(false);
@@ -43,7 +31,7 @@ const Form = () => {
       : setDisable(false);
   }, [name, email, password]);
 
-  const handleBlur = (value:string, type:string) => {
+  const handleBlur = (value: string, type: string) => {
     value.length && type === 'name'
       ? setNameErrShow(true)
       : setNameErrShow(false);
@@ -57,21 +45,22 @@ const Form = () => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const payload:Submitter = {
+    const payload: Submitter = {
       name,
       email,
-      password,
+      password
     };
 
     console.log('Payload:', payload);
-    setDisable(true)
-    MySwal.fire({
-      title: (
-        <p className='payloadMessage'>{`Thanks for signing up ${payload.name[0].toUpperCase()}${payload.name.slice(
-          1
-        )}!`}</p>
-      ),
-    });
+    const { name: pName } = payload;
+    alert(`Thanks for signing up ${pName[0].toUpperCase}${pName.slice(1)}`);
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -113,7 +102,11 @@ const Form = () => {
           <p className='form'>{passwordErrShow && passwordError}</p>
         </label>
 
-        <button className={disable ?'button-disable':'button-enable'} type='submit' disabled={disable}>
+        <button
+          className={disable ? 'button-disable' : 'button-enable'}
+          type='submit'
+          disabled={disable}
+        >
           Submit
         </button>
       </form>
