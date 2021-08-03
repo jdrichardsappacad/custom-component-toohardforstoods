@@ -15,3 +15,43 @@ main {
   height: 100vh;
   background-color: #333;
 }
+
+form {
+  background: transparent;
+}
+
+input {
+  background: white;
+  border-color: transparent;
+  border-radius: 2px;
+  height: 3em;
+  width: 20vw;
+  margin: 0.7em 0;
+  padding: 5px;
+}
+
+p.form {
+  color: rgb(252, 84, 115);
+  font-size: 0.55em;
+  background: transparent;
+}
+
+h1 {
+  background: transparent;
+  color: #fff;
+  font-size: 1.7em;
+}
+
+button[type='submit'] {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 10px;
+  /* text-decoration: none; */
+  margin: 10px 2px;
+  cursor: pointer;
+  height: 2.5em;
+  width: 7em;
+  font-size: 1.1em;
+  font-weight: bold;
+}

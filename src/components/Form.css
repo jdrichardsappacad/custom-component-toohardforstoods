@@ -12,44 +12,6 @@
   box-shadow: 0.3rem 1rem 1.8rem #000;
 }
 
-form {
-  background: transparent;
-}
-
-input {
-  background: white;
-  border-color: transparent;
-  border-radius: 2px;
-}
-
-p.form {
-  color: rgb(252, 84, 115);
-  font-size: 0.55em;
-  background: transparent;
-}
-
-h4 {
-  background: transparent;
-  color: #fff;
-}
-
-input {
-  padding: 5px;
-  margin: 0.7em 0;
-  width: 20vw;
-}
-
-button[type='submit'] {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  padding: 10px 10px;
-  text-decoration: none;
-  margin: 10px 2px;
-  cursor: pointer;
-  width: 6em;
-}
-
 .button-disable {
   background: #333;
   color: white;
