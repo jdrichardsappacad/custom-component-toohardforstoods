@@ -76,7 +76,7 @@ const Form = () => {
             onBlur={() => handleBlur(nameError, 'name')}
             placeholder='name'
           />
-          <p className='form'>{nameErrShow && nameError}</p>
+          <p className='error-message'>{nameErrShow && nameError}</p>
         </label>
         <label htmlFor='email'>
           <input
@@ -87,7 +87,7 @@ const Form = () => {
             onBlur={() => handleBlur(emailError, 'email')}
             placeholder='email'
           />
-          <p className='form'>{emailErrShow && emailError}</p>
+          <p className='error-message'>{emailErrShow && emailError}</p>
         </label>
         <label htmlFor='password'>
           <input
@@ -99,7 +99,7 @@ const Form = () => {
             onBlur={() => handleBlur(passwordError, 'password')}
             placeholder='password'
           />
-          <p className='form'>{passwordErrShow && passwordError}</p>
+          <p className='error-message'>{passwordErrShow && passwordError}</p>
         </label>
 
         <button

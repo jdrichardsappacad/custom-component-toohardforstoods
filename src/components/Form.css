@@ -38,3 +38,9 @@ button.button-enable:hover {
   color: black;
   font-size: 0.7em;
 }
+
+p.error-message {
+  color: rgb(252, 84, 115);
+  font-size: 1em;
+  background: transparent;
+}

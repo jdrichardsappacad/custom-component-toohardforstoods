@@ -30,12 +30,6 @@ input {
   padding: 5px;
 }
 
-p.form {
-  color: rgb(252, 84, 115);
-  font-size: 0.55em;
-  background: transparent;
-}
-
 h1 {
   background: transparent;
   color: #fff;
@@ -47,7 +41,6 @@ button[type='submit'] {
   border-radius: 5px;
   color: white;
   padding: 10px 10px;
-  /* text-decoration: none; */
   margin: 10px 2px;
   cursor: pointer;
   height: 2.5em;
