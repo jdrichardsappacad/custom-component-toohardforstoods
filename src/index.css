@@ -24,8 +24,9 @@ input {
   background: white;
   border-color: transparent;
   border-radius: 2px;
-  height: 3em;
-  width: 20vw;
+  height: 2.7em;
+  width: 15vw;
+  min-width: 200px;
   margin: 0.7em 0;
   padding: 5px;
 }

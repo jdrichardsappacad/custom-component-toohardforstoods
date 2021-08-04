@@ -1,6 +1,7 @@
 .form-container {
   height: 65vh;
   width: 30vw;
+  min-width: 300px;
   background-color: #066ace;
   display: flex;
   flex-direction: column;
