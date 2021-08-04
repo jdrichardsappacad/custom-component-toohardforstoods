@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render,screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isName, isEmail, isPassword } from '../utils/validations';
 import '@testing-library/jest-dom/extend-expect';
@@ -7,11 +7,24 @@ import Form from './Form';
 describe('signup functionality', () => {
   test('renders form with inputs and submit button', () => {
     const { getByPlaceholderText, getByText } = render(<Form />);
-    getByPlaceholderText(/name/i);
-    getByPlaceholderText(/email/i);
-    getByPlaceholderText(/password/i);
+    const nameInput = getByPlaceholderText(/name/i);
+    const emailInput =getByPlaceholderText(/email/i);
+    const passwordInput =getByPlaceholderText(/password/i);
     const submitBtn = getByText(/submit/i);
+
+    expect (nameInput.value).toBe('')
+    expect (emailInput.value).toBe('')
+    expect (passwordInput.value).toBe('')
     expect(submitBtn).toBeDisabled();
+
+
+    fireEvent.change(nameInput, { target: { value: 'johnson' } });
+    expect(nameInput.value).toMatch('johnson');
+    fireEvent.change(emailInput, { target: { value: 'jd@me.com' } });
+    expect(emailInput.value).toMatch('jd@me.com');
+    fireEvent.change(passwordInput, { target: { value: 'password' } });
+    expect(passwordInput.value).toMatch('password');
+
   });
 
   test('isName should pass on correct input', () => {
@@ -46,23 +59,5 @@ describe('signup functionality', () => {
   test('isPassword should pass on correct input', () => {
     const text = 'po';
     expect(isPassword(text)).toBe('Password length must be 6 or greater');
-  });
-
-  test('username input should accept text', () => {
-    const { getByPlaceholderText, getByText } = render(<Form />);
-    const node = getByPlaceholderText(/name/i);
-
-    expect(node.value).toMatch('');
-    fireEvent.change(node, { target: { value: 'jonathan' } });
-    expect(node.value).toMatch('jonathan');
-  });
-
-  test('email input should accept text', () => {
-    const { getByPlaceholderText, getByText } = render(<Form />);
-    const node = getByPlaceholderText(/email/i);
-
-    expect(node.value).toMatch('');
-    fireEvent.change(node, { target: { value: 'jonathan' } });
-    expect(node.value).toMatch('jonathan');
   });
 });
